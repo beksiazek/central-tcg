@@ -1,25 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from "./components/Navbar/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Central TCG by <i>bksiazek</i> coming soon.
-        </p>
-        <a
-          className="App-link"
-          href="https://github.com/beksiazek/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Check out my Github profile
-        </a>
-      </header>
-    </div>
+export default function App() {
+    return (
+    <>
+        <NavBar brandName="Central-TCG" />
+        <p>Bienvenido a Central-TCG!</p>
+    </>
   );
 }
-
-export default App;
