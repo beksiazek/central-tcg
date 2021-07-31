@@ -1,0 +1,10 @@
+.quantity-input {
+    text-align: center;
+    flex: none!important;
+    width: 26%!important;
+}
+
+.quantity-input-group {
+    justify-content: center;
+    margin-bottom: 10px;
+}

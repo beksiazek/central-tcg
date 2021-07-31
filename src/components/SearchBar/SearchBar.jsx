@@ -12,7 +12,7 @@ export default function SearchBar() {
                 className="mr-2"
                 aria-label="Search"
             />
-            <BaseButton variant="outline-light"><AiOutlineSearch /></BaseButton>
+            <BaseButton label={<AiOutlineSearch />} variant="outline-light"></BaseButton>
         </Form>
     )
 }
