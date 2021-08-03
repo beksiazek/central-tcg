@@ -6,7 +6,7 @@ import cardImg from "../../img/cardProto.jpg";
 import "./ItemCard.css";
 
 export default function ItemCard(props) {
-	const { itemLabel, buttonLabel, currentQuantity, maxQuantity, onAddToKart } = props;
+	const { itemLabel, buttonLabel, currentQuantity, maxQuantity, onAddToKart, imgSource } = props;
 	const [checkButtonIsDisabled, setCheckButtonIsDisabled] = useState(true);
 
 	useEffect(
@@ -18,8 +18,8 @@ export default function ItemCard(props) {
 	);
 
 	return (
-		<Card bg="secondary" style={{ width: "18rem" }}>
-			<Card.Img variant="top" src={cardImg} height="300px" />
+		<Card bg="secondary">
+			<Card.Img variant="top" src={imgSource ? imgSource : cardImg } />
 			<Card.Body>
 				<Card.Title>{itemLabel}</Card.Title>
 				<QuantitySelector

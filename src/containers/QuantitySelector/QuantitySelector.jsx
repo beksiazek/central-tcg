@@ -2,7 +2,7 @@ import React from "react";
 import QuantitySelector from "../../components/QuantitySelector/QuantitySelector";
 
 export default function QuantitySelectorContainer(props) {
-	const { maxQuantity, setCheckButtonIsDisabled, currentQuantity, setCurrentQuantity } = props;
+	const { maxQuantity, currentQuantity, setCurrentQuantity } = props;
 
 	function substractItem() {
 		setCurrentQuantity(currentQuantity - 1);

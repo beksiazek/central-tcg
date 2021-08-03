@@ -1,7 +1,22 @@
+h1 {
+    color: white;
+}
+
+.list-container {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0.5;
+    flex-wrap: wrap;
+}
+
 .item-list {
     min-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 1em;
 }
