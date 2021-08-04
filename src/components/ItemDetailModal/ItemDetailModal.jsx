@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import "./ItemDetailModal.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function ProductDetailModal(props) {
+export default function ItemDetailModal(props) {
 	const { show, setShow, item } = props;
 	const star = "⭐";
 
