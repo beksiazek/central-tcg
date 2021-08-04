@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "./Navbar.css";
 
@@ -11,8 +12,8 @@ export default function NavbarComponent(props) {
 				<Navbar.Brand href="#home">{`${brandName}`}</Navbar.Brand>
 				<Navbar.Toggle />
 				<Nav className="me-auto">
-					<Nav.Link href="#tienda">Tienda</Nav.Link>
-					<Nav.Link href="#intercambio">Intercambio</Nav.Link>
+					<Nav.Link as={Link} to="/shop">Tienda</Nav.Link>
+					<Nav.Link as={Link} to="/trading">Intercambio</Nav.Link>
 					<Nav.Link href="#mi-lista">Mi Lista</Nav.Link>
 				</Nav>
 				<Nav>{children}</Nav>

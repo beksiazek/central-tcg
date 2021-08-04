@@ -18,5 +18,5 @@ h1 {
     align-items: center;
     flex-grow: 1;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 2em;
 }

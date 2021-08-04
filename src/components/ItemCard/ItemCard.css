@@ -3,6 +3,10 @@
     height: auto;
 }
 
+.card-image {
+    cursor: pointer;
+}
+
 .card-title {
     text-align: center;
 }
