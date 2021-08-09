@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import _ from "lodash";
 import ShopItemList from "../ShopItemList/ShopItemList";
-import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
+import ItemDetail from "../ItemDetailContainer/ItemDetailContainer";
 import getItems from "../../services/ygoapi.call";
 
 export default function Shop(props) {
@@ -35,7 +35,7 @@ export default function Shop(props) {
 					/>
 				</Route>
 				<Route path={`${path}/:itemId`}>
-					<ItemDetailContainer />
+					<ItemDetail />
 				</Route>
 			</Switch>
 		</div>

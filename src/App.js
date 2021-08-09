@@ -14,7 +14,7 @@ export default function App() {
 	return (
 		<Router>
 			<div className="app-container">
-				<Navbar brandName="Central-TCG" rightElement={<KartWidget kartItemCount={kartItemCount}/>}>
+				<Navbar brandName="Central-TCG" rightElement={<KartWidget kartItemCount={kartItemCount} setKartItemCount={setKartItemCount} />}>
 					<SearchBar />
 				</Navbar>
 				<Switch>

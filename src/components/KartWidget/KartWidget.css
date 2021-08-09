@@ -2,3 +2,12 @@
     background: none;
     box-shadow: none;
 }
+
+.kart-clear-container {
+    color: white;
+    text-align: center;
+    align-items: center;
+    padding-left: 10px!important;
+    font-size: 1.3rem;
+    cursor: pointer;
+}

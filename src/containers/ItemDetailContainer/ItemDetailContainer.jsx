@@ -5,7 +5,7 @@ import getItems from "../../services/ygoapi.call";
 import LoaderSpinner from "../../components/LoaderSpinner/LoaderSpinner";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 
-export default function ItemDetailModal(props) {
+export default function ItemDetailContainer(props) {
 	const { itemId } = useParams();
 	const [item, setItem] = useState();
 
