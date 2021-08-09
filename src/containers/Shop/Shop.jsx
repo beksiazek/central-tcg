@@ -1,18 +1,18 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect } from "react";
+import {
+	Switch,
+	Route,
+	useRouteMatch,
+} from "react-router-dom";
 import _ from "lodash";
-import ShopItemList from '../ShopItemList/ShopItemList';
-import ItemDetailModal from "../../components/ItemDetailModal/ItemDetailModal";
+import ShopItemList from "../ShopItemList/ShopItemList";
+import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
 import getItems from "../../services/ygoapi.call";
 
-export default function Shop() {
-    const [showModal, setShowModal] = useState(false);
-    const [items, setItems] = useState([]);
-	const [modalItemId, setModalItemId] = useState(0);
+export default function Shop(props) {
+	let { path, url } = useRouteMatch();
 
-	function setModalItemAndShow(id) {
-		setModalItemId(id);
-		setShowModal(true);
-	}
+	const [items, setItems] = useState([]);
 
 	useEffect(() => {
 		getItems()
@@ -24,12 +24,20 @@ export default function Shop() {
 			});
 	}, []);
 
-	console.log(items);
-
-    return (
-        <div className="shop-container">
-            <ShopItemList items={items} setModalItemAndShow={setModalItemAndShow} />
-            <ItemDetailModal item={_.find(items, {"id": modalItemId})} show={showModal} setShow={setShowModal}/>
-        </div>
-    )
+	return (
+		<div className="shop-container">
+			<Switch>	
+				<Route exact path={path}>
+					<ShopItemList
+						items={items}
+						url={url}
+						{...props}
+					/>
+				</Route>
+				<Route path={`${path}/:itemId`}>
+					<ItemDetailContainer />
+				</Route>
+			</Switch>
+		</div>
+	);
 }

@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import QuantitySelector from "../../containers/QuantitySelector/QuantitySelector";
 import BaseButton from "../BaseButton/BaseButton";
@@ -6,7 +7,16 @@ import cardImg from "../../img/cardProto.jpg";
 import "./ItemCard.css";
 
 export default function ItemCard(props) {
-	const { itemLabel, buttonLabel, currentQuantity, maxQuantity, onAddToKart, imgSource, setModalItemAndShow, itemId } = props;
+	const {
+		itemLabel,
+		buttonLabel,
+		currentQuantity,
+		maxQuantity,
+		onAddToKart,
+		imgSource,
+		itemId,
+		url,
+	} = props;
 	const [checkButtonIsDisabled, setCheckButtonIsDisabled] = useState(true);
 
 	useEffect(
@@ -19,7 +29,13 @@ export default function ItemCard(props) {
 
 	return (
 		<Card bg="secondary">
-			<Card.Img className="card-image" variant="top" src={imgSource ? imgSource : cardImg } onClick={() => setModalItemAndShow(itemId)} />
+			<Link to={`${url}/${itemId}`}>
+				<Card.Img
+					className="card-image"
+					variant="top"
+					src={imgSource ? imgSource : cardImg}
+				/>
+			</Link>
 			<Card.Body>
 				<Card.Title>{itemLabel}</Card.Title>
 				<QuantitySelector

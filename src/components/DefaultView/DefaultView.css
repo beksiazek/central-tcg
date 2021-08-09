@@ -2,13 +2,15 @@
     color: #FFFFFF;
 }
 
-.under-construction-container {
+.default-view-container {
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
+    text-align: center;
+    align-items: center;
 }
 
-.tools-icon {
+.view-icon {
     font-size: 6rem;
 }

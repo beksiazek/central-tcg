@@ -3,7 +3,7 @@ import ItemList from "../../components/ItemList/ItemList";
 import ShopItemCard from "../ShopItemCard/ShopItemCard";
 
 export default function ShopItemList(props) {
-	const { items, setModalItemAndShow} = props;
+	const { items, kartItemCount, setKartItemCount, url } = props;
 
 	function renderItem(item) {
 		return <ShopItemCard
@@ -13,7 +13,9 @@ export default function ShopItemList(props) {
 			itemLabel={item.name}
 			initQuantity={1}
 			maxQuantity={3}
-			setModalItemAndShow={setModalItemAndShow}
+			kartItemCount={kartItemCount} 
+			setKartItemCount={setKartItemCount}
+			url={url}
 		></ShopItemCard>;
 	}
 
