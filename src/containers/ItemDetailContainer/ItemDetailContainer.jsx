@@ -7,7 +7,19 @@ import ItemDetail from "../../components/ItemDetail/ItemDetail";
 
 export default function ItemDetailContainer(props) {
 	const { itemId } = useParams();
+	const { kartItemCount, setKartItemCount } = props;
 	const [item, setItem] = useState();
+	const [currentQuantity, setCurrentQuantity] = useState(1);
+	const [checkButtonIsDisabled, setCheckButtonIsDisabled] = useState(true);
+
+	function onAddToKart() {
+		setKartItemCount(kartItemCount + currentQuantity);
+		console.log(
+			currentQuantity +
+				(currentQuantity > 1 ? " items" : " item") +
+				" se han agregado al carrito!"
+		);
+	}
 
 	useEffect(() => {
 		getItems(itemId)
@@ -17,13 +29,28 @@ export default function ItemDetailContainer(props) {
 			.catch(() => {
 				console.log("No se pudo completar la petición.");
 			});
-	}, []);
+	}, [itemId]);
 
+	useEffect(
+		() =>
+			setCheckButtonIsDisabled(
+				currentQuantity <= 0 || currentQuantity > 3
+			),
+		[currentQuantity]
+	);
 
 	return item ? (
-		<ItemDetail item={item} />
-	) :
-	(
+		<ItemDetail
+			item={item}
+			initQuantity={1}
+			maxQuantity={3}
+			currentQuantity={currentQuantity}
+			setCurrentQuantity={setCurrentQuantity}
+			onAddToKart={onAddToKart}
+			checkButtonIsDisabled={checkButtonIsDisabled}
+			setCheckButtonIsDisabled={setCheckButtonIsDisabled}
+		/>
+	) : (
 		<div className="loader-container">
 			<LoaderSpinner />
 		</div>

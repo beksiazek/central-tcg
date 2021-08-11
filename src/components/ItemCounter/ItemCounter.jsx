@@ -2,7 +2,7 @@ import React from "react";
 import { InputGroup, FormControl } from "react-bootstrap";
 import BaseButton from "../BaseButton/BaseButton";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import "./QuantitySelector.css";
+import "./ItemCounter.css";
 
 export default function QuantitySelector(props) {
 	const {

@@ -1,5 +1,5 @@
 import React from "react";
-import QuantitySelector from "../../components/QuantitySelector/QuantitySelector";
+import ItemCounter from "../../components/ItemCounter/ItemCounter";
 
 export default function QuantitySelectorContainer(props) {
 	const { maxQuantity, currentQuantity, setCurrentQuantity } = props;
@@ -23,7 +23,7 @@ export default function QuantitySelectorContainer(props) {
 	}
 
 	return (
-		<QuantitySelector
+		<ItemCounter
 			addItem={addItem}
 			substractItem={substractItem}
 			currentQuantity={currentQuantity}

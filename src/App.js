@@ -1,10 +1,10 @@
 import { React, useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import SearchBar from "./components/SearchBar/SearchBar";
 import KartWidget from "./components/KartWidget/KartWidget";
-import UnderConstructionView from "./components/UnderConstructionView/UnderConstructionView";
-import Shop from "./containers/Shop/Shop";
+import ItemListContainer from "./containers/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./containers/ItemDetailContainer/ItemDetailContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -19,10 +19,13 @@ export default function App() {
 				</Navbar>
 				<Switch>
 					<Route exact path="/">
-						<UnderConstructionView />
+						<ItemListContainer />
 					</Route>
-					<Route path="/shop">	
-						<Shop kartItemCount={kartItemCount} setKartItemCount={setKartItemCount}/>
+					<Route path="/category/:categoryId">	
+						<ItemListContainer />
+					</Route>
+					<Route path="/item/:itemId">
+						<ItemDetailContainer kartItemCount={kartItemCount} setKartItemCount={setKartItemCount} />
 					</Route>
 					<Route path="/trading"></Route>
 				</Switch>

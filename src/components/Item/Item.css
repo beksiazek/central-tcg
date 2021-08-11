@@ -3,10 +3,6 @@
     height: auto;
 }
 
-.card-image {
-    cursor: pointer;
-}
-
 .card-title {
     text-align: center;
 }
@@ -16,4 +12,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.detail-button {
+    border-radius: 25px!important;
 }

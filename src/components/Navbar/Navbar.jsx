@@ -13,9 +13,9 @@ export default function NavbarComponent(props) {
 				<Navbar.Brand as={Link} to="/"><GiCardExchange className="brand-icon" />{`${brandName}`}</Navbar.Brand>
 				<Navbar.Toggle />
 				<Nav className="me-auto">
-					<Nav.Link as={Link} to="/shop">Tienda</Nav.Link>
-					<Nav.Link as={Link} to="/trading">Intercambio</Nav.Link>
-					<Nav.Link href="#mi-lista">Mi Lista</Nav.Link>
+					<Nav.Link as={Link} to="/category/normal%20monster,effect%20monster">Monsters</Nav.Link>
+					<Nav.Link as={Link} to="/category/spell%20card">Spells</Nav.Link>
+					<Nav.Link as={Link} to="/category/trap%20card">Traps</Nav.Link>
 				</Nav>
 				<Nav>{children}</Nav>
 				<Navbar.Collapse className="justify-content-end">
