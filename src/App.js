@@ -5,6 +5,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import KartWidget from "./components/KartWidget/KartWidget";
 import ItemListContainer from "./containers/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./containers/ItemDetailContainer/ItemDetailContainer";
+import UnderConstructionView from "./components/UnderConstructionView/UnderConstructionView";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -27,7 +28,9 @@ export default function App() {
 					<Route path="/item/:itemId">
 						<ItemDetailContainer kartItemCount={kartItemCount} setKartItemCount={setKartItemCount} />
 					</Route>
-					<Route path="/trading"></Route>
+					<Route path="/kart">
+						<UnderConstructionView />
+					</Route>
 				</Switch>
 			</div>
 		</Router>

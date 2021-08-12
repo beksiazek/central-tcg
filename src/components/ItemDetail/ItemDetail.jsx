@@ -1,4 +1,5 @@
 import React from "react";
+import { Link }  from "react-router-dom"; 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import ItemCounter from "../../containers/ItemCounterContainer/ItemCounterContainer";
@@ -10,6 +11,7 @@ export default function ItemDetail(props) {
 		item,
 		setCheckButtonIsDisabled,
 		onAddToKart,
+		addedToKart,
 		checkButtonIsDisabled,
 	} = props;
 	const star = "⭐";
@@ -40,18 +42,26 @@ export default function ItemDetail(props) {
 						<h1>${item.card_prices[0].tcgplayer_price}</h1>
 						<h4 className="unit">xU.</h4>
 						<div className="add-to-kart-container">
-							<ItemCounter
-								setCheckButtonIsDisabled={
-									setCheckButtonIsDisabled
-								}
-								{...props}
-							/>
-							<BaseButton
-								label="Agregar al carrito"
-								variant="success"
-								onClick={onAddToKart}
-								isDisabled={checkButtonIsDisabled}
-							></BaseButton>
+							{!addedToKart ? (
+								<>
+									<ItemCounter
+										setCheckButtonIsDisabled={
+											setCheckButtonIsDisabled
+										}
+										{...props}
+									/>
+									<BaseButton
+										label="Agregar al carrito"
+										variant="success"
+										onClick={onAddToKart}
+										isDisabled={checkButtonIsDisabled}
+									></BaseButton>
+								</>
+							) : (
+								<Link className="btn btn-success"
+									to="/kart"
+								>Finalizar compra</Link>
+							)}
 						</div>
 					</div>
 				</Col>

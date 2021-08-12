@@ -11,9 +11,11 @@ export default function ItemDetailContainer(props) {
 	const [item, setItem] = useState();
 	const [currentQuantity, setCurrentQuantity] = useState(1);
 	const [checkButtonIsDisabled, setCheckButtonIsDisabled] = useState(true);
+	const [addedToKart, setAddedToKart] =useState(false);
 
 	function onAddToKart() {
 		setKartItemCount(kartItemCount + currentQuantity);
+		setAddedToKart(true);
 		console.log(
 			currentQuantity +
 				(currentQuantity > 1 ? " items" : " item") +
@@ -47,6 +49,7 @@ export default function ItemDetailContainer(props) {
 			currentQuantity={currentQuantity}
 			setCurrentQuantity={setCurrentQuantity}
 			onAddToKart={onAddToKart}
+			addedToKart={addedToKart}
 			checkButtonIsDisabled={checkButtonIsDisabled}
 			setCheckButtonIsDisabled={setCheckButtonIsDisabled}
 		/>
