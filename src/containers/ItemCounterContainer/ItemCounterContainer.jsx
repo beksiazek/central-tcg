@@ -15,8 +15,8 @@ export default function QuantitySelectorContainer(props) {
 	function onInput(event, value) {
 		isNaN(value)
 			? event.preventDefault()
-			: value < 0
-			? setCurrentQuantity(0)
+			: value < 1
+			? setCurrentQuantity(1)
 			: value > maxQuantity
 			? setCurrentQuantity(maxQuantity)
 			: setCurrentQuantity(Number(value));
@@ -29,7 +29,7 @@ export default function QuantitySelectorContainer(props) {
 			currentQuantity={currentQuantity}
 			maxQuantity={maxQuantity}
 			setCurrentQuantity={setCurrentQuantity}
-			substractButtonIsDisabled={currentQuantity <= 0}
+			substractButtonIsDisabled={currentQuantity <= 1}
 			addButtonIsDisabled={currentQuantity >= maxQuantity}
 			onInput={onInput}
 		/>

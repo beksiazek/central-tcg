@@ -14,7 +14,6 @@ export default function Shop(props) {
 		getItems(null, categoryId, null, offset)
 			.then((result) => {
 				setItems(result.data);
-				console.log(items);
 			})
 			.catch(() => {
 				console.log("No se pudo completar la petición.");
