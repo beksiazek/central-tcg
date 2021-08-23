@@ -1,41 +1,42 @@
-import { React, useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { KartContextProvider } from "./context/kartContext";
+import { CartContextProvider } from "./context/cartContext";
 import Navbar from "./components/Navbar/Navbar";
 import SearchBar from "./components/SearchBar/SearchBar";
-import KartWidget from "./components/KartWidget/KartWidget";
+import CartWidget from "./components/CartWidget/CartWidget";
 import ItemListContainer from "./containers/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./containers/ItemDetailContainer/ItemDetailContainer";
-import UnderConstructionView from "./components/UnderConstructionView/UnderConstructionView";
+import Cart from "./components/Cart/Cart";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 export default function App() {
-	const [kartItemCount, setKartItemCount] = useState(0);
-
 	return (
-		<KartContextProvider>
+		<CartContextProvider>
 			<Router>
 				<div className="app-container">
-					<Navbar brandName="Central-TCG" rightElement={<KartWidget kartItemCount={kartItemCount} setKartItemCount={setKartItemCount} />}>
+					<Navbar
+						brandName="Central-TCG"
+						rightElement={<CartWidget />}
+					>
 						<SearchBar />
 					</Navbar>
 					<Switch>
 						<Route exact path="/">
 							<ItemListContainer />
 						</Route>
-						<Route path="/category/:categoryId">	
+						<Route path="/category/:categoryId">
 							<ItemListContainer />
 						</Route>
 						<Route path="/item/:itemId">
-							<ItemDetailContainer kartItemCount={kartItemCount} setKartItemCount={setKartItemCount} />
+							<ItemDetailContainer />
 						</Route>
-						<Route path="/kart">
-							<UnderConstructionView />
+						<Route path="/cart">
+							<Cart />
 						</Route>
 					</Switch>
 				</div>
 			</Router>
-		</KartContextProvider>
+		</CartContextProvider>
 	);
 }

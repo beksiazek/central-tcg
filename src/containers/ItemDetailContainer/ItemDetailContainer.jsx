@@ -1,6 +1,6 @@
 import { React, useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import kartContext from "../../context/kartContext";
+import cartContext from "../../context/cartContext";
 import _ from "lodash";
 import getItems from "../../services/ygoapi.call";
 import LoaderSpinner from "../../components/LoaderSpinner/LoaderSpinner";
@@ -11,13 +11,13 @@ export default function ItemDetailContainer() {
 	const [item, setItem] = useState();
 	const [currentQuantity, setCurrentQuantity] = useState(1);
 	const [checkButtonIsDisabled, setCheckButtonIsDisabled] = useState(true);
-	const [addedToKart, setAddedToKart] =useState(false);
+	const [addedToCart, setAddedToCart] = useState(false);
 
-	const { addItemToKart, removeItemFromKart } = useContext(kartContext);
+	const { addItemToCart } = useContext(cartContext);
 
-	function onAddToKart() {
-		addItemToKart(item, currentQuantity);
-		setAddedToKart(true);
+	function onAddToCart() {
+		addItemToCart(item, currentQuantity);
+		setAddedToCart(true);
 		console.log(
 			currentQuantity +
 				(currentQuantity > 1 ? " items" : " item") +
@@ -50,9 +50,8 @@ export default function ItemDetailContainer() {
 			maxQuantity={3}
 			currentQuantity={currentQuantity}
 			setCurrentQuantity={setCurrentQuantity}
-			onAddToKart={onAddToKart}
-			deletefromkart={removeItemFromKart}
-			addedToKart={addedToKart}
+			onAddToCart={onAddToCart}
+			addedToCart={addedToCart}
 			checkButtonIsDisabled={checkButtonIsDisabled}
 			setCheckButtonIsDisabled={setCheckButtonIsDisabled}
 		/>

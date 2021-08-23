@@ -1,16 +1,26 @@
-import React from "react";
+import { React } from "react";
 import ItemCounter from "../../components/ItemCounter/ItemCounter";
 
 export default function QuantitySelectorContainer(props) {
-	const { maxQuantity, currentQuantity, setCurrentQuantity } = props;
+	const {
+		maxQuantity,
+		currentQuantity,
+		setCurrentQuantity,
+		customQuantitySet,
+		variant,
+	} = props;
 
+//TO DO resolver problema al renderizar con el valor viejo de currentQuantity
 	function substractItem() {
 		setCurrentQuantity(currentQuantity - 1);
+		customQuantitySet && customQuantitySet(currentQuantity - 1);
 	}
 
 	function addItem() {
 		setCurrentQuantity(currentQuantity + 1);
+		customQuantitySet && customQuantitySet(currentQuantity + 1);
 	}
+/////////
 
 	function onInput(event, value) {
 		isNaN(value)
@@ -28,10 +38,10 @@ export default function QuantitySelectorContainer(props) {
 			substractItem={substractItem}
 			currentQuantity={currentQuantity}
 			maxQuantity={maxQuantity}
-			setCurrentQuantity={setCurrentQuantity}
 			substractButtonIsDisabled={currentQuantity <= 1}
 			addButtonIsDisabled={currentQuantity >= maxQuantity}
 			onInput={onInput}
+			variant={variant}
 		/>
 	);
 }

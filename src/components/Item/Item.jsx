@@ -1,26 +1,41 @@
-import { React } from "react";
+import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import cardImg from "../../img/cardProto.jpg";
+import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 import "./Item.css";
 
 export default function ItemCard(props) {
-	const {
-		itemLabel,
-		imgSource,
-		itemId,
-	} = props;
+	const { itemLabel, imgSource, itemId } = props;
+
+	const [isLoadingImg, setIsLoadingImg] = useState(true);
+
+	useEffect(() => {
+		const img = new Image();
+		img.src = imgSource;
+		img.onload = () => {
+			setIsLoadingImg(false);
+		};
+	}, [imgSource]);
 
 	return (
 		<Card bg="secondary">
+			{isLoadingImg ? (
+				<div className="img-placeholder">
+					<LoaderSpinner />
+				</div>
+			) : (
 				<Card.Img
 					className="card-image"
 					variant="top"
-					src={imgSource ? imgSource : cardImg}
+					src={imgSource}
 				/>
+			)}
 			<Card.Body>
 				<Card.Title>{itemLabel}</Card.Title>
-				<Link className="btn btn-outline-light detail-button" to={`/item/${itemId}`}>
+				<Link
+					className="btn btn-outline-light detail-button"
+					to={`/item/${itemId}`}
+				>
 					Ver más
 				</Link>
 			</Card.Body>

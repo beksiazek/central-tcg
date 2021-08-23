@@ -10,8 +10,8 @@ export default function ItemDetail(props) {
 	const {
 		item,
 		setCheckButtonIsDisabled,
-		onAddToKart,
-		addedToKart,
+		onAddToCart,
+		addedToCart,
 		checkButtonIsDisabled,
 	} = props;
 	const star = "⭐";
@@ -41,8 +41,8 @@ export default function ItemDetail(props) {
 						<p id="card-desc">{item.desc}</p>
 						<h1>${item.card_prices[0].tcgplayer_price}</h1>
 						<h4 className="unit">xU.</h4>
-						<div className="add-to-kart-container">
-							{!addedToKart ? (
+						<div className="add-to-cart-container">
+							{!addedToCart ? (
 								<>
 									<ItemCounter
 										setCheckButtonIsDisabled={
@@ -53,13 +53,13 @@ export default function ItemDetail(props) {
 									<BaseButton
 										label="Agregar al carrito"
 										variant="success"
-										onClick={onAddToKart}
+										onClick={onAddToCart}
 										isDisabled={checkButtonIsDisabled}
 									></BaseButton>
 								</>
 							) : (
 								<Link className="btn btn-success"
-									to="/kart"
+									to="/cart"
 								>Finalizar compra</Link>
 							)}
 						</div>

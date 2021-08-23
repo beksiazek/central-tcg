@@ -12,14 +12,15 @@ export default function QuantitySelector(props) {
 		addItem,
 		substractButtonIsDisabled,
 		addButtonIsDisabled,
-		onInput
+		onInput,
+		variant
 	} = props;
 
 	return (
 		<InputGroup className="quantity-input-group">
 			<BaseButton
 				label={<AiOutlineMinus />}
-				variant="outline-light"
+				variant={variant || "outline-light"}
 				onClick={substractItem}
 				isDisabled={substractButtonIsDisabled}
 			></BaseButton>
@@ -35,7 +36,7 @@ export default function QuantitySelector(props) {
 			/>
 			<BaseButton
 				label={<AiOutlinePlus />}
-				variant="outline-light"
+				variant={variant || "outline-light"}
 				onClick={addItem}
 				isDisabled={addButtonIsDisabled}
 			></BaseButton>

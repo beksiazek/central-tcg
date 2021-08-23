@@ -17,3 +17,12 @@
 .detail-button {
     border-radius: 25px!important;
 }
+
+.img-placeholder {
+    background-color: #6c757d;
+    height: 21.6vw;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

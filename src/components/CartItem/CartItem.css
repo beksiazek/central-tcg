@@ -1,0 +1,26 @@
+.cart-item {
+    position: relative;
+    min-width: 0;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .3rem;
+    padding: 0.5rem;
+    margin: 1rem!important;
+    align-items: center;
+    font-size: larger;
+}
+
+
+
+.cart-item-image {
+    max-width: 50px;
+}
+
+.cart-item-field {
+    padding:0px 14px!important;
+}
+
+.delete-item {
+    font-size: 1.8rem;
+    cursor: pointer;
+}
