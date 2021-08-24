@@ -25,7 +25,7 @@ export default function CartItem(props) {
 
 	return (
 		<Row className="cart-item">
-			<Col sm={1} xs={6} className="list-item-field">
+			<Col sm={2} xs={6} className="list-item-field">
 				{isLoadingImg ? (
 					<div className="cart-item-image">
 						<LoaderSpinner width={50} height={50} />
@@ -41,7 +41,7 @@ export default function CartItem(props) {
 			<Col sm={4} xs={6} className="list-item-field">
 				{item.name}
 			</Col>
-			<Col sm={4} xs={6} className="list-item-field">
+			<Col sm={3} xs={6} className="list-item-field">
 				<ItemCounter
 					variant="outline-dark"
 					maxQuantity={3}

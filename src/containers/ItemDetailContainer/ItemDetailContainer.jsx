@@ -1,10 +1,12 @@
 import { React, useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import cartContext from "../../context/cartContext";
-import _ from "lodash";
-import getItems from "../../services/ygoapi.call";
 import LoaderSpinner from "../../components/LoaderSpinner/LoaderSpinner";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
+import { firestore } from "../../firebase/firebase";
+
+const db = firestore;
+const productsCollection = db.collection("products");
 
 export default function ItemDetailContainer() {
 	const { itemId } = useParams();
@@ -26,12 +28,12 @@ export default function ItemDetailContainer() {
 	}
 
 	useEffect(() => {
-		getItems(itemId)
+		productsCollection.doc(itemId.toString()).get()
 			.then((result) => {
-				setItem(_.first(result.data));
+				setItem(result.data());
 			})
-			.catch(() => {
-				console.log("No se pudo completar la petición.");
+			.catch((err) => {
+				console.log("No se pudo completar la petición.", err);
 			});
 	}, [itemId]);
 

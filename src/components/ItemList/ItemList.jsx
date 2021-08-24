@@ -8,10 +8,10 @@ export default function ShopItemList(props) {
 	const { items, prevPage, nextPage, prevButtonDisabled } = props;
 
 	function renderItem(item) {
-		return <Item
+		return item.id && <Item
 			key={item.id}
 			itemId={item.id}
-			imgSource={item.card_images[0].image_url}
+			imgSource={item.card_images && item.card_images[0].image_url}
 			itemLabel={item.name}
 		></Item>;
 	}
