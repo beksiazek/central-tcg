@@ -2,8 +2,9 @@ import { React, useContext } from "react";
 import cartContext from "../../context/cartContext";
 import "./CartResume.css";
 
-export default function CartResume() {
+export default function CartResume(props) {
 	const { clearCart } = useContext(cartContext);
+	const { generateOrder } = props;
 
 	return (
 		<div className="cart-resume">
@@ -17,7 +18,7 @@ export default function CartResume() {
 					</cartContext.Consumer>
 				</h1>
 			</div>
-			<button className="pay-button btn btn-success">Finalizar compra</button>
+			<button className="pay-button btn btn-success" onClick={generateOrder} >Finalizar compra</button>
 			<button className="clear-cart-button btn btn-outline-danger" onClick={clearCart}>Vaciar carrito</button>
 		</div>
 	);

@@ -1,11 +1,9 @@
 import React from "react";
 import Item from "../Item/Item";
-import BaseButton from "../BaseButton/BaseButton";
-import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 import "./ItemList.css";
 
 export default function ShopItemList(props) {
-	const { items, prevPage, nextPage, prevButtonDisabled } = props;
+	const { items, categoryId } = props;
 
 	function renderItem(item) {
 		return item.id && <Item
@@ -18,11 +16,9 @@ export default function ShopItemList(props) {
 
 	return (
 		<div className="list-container">    
-			<h1>Productos destacados</h1>
-			<div className="item-list">
-				<BaseButton variant="outline-light" label={<BiLeftArrow />} onClick={prevPage} isDisabled={prevButtonDisabled} />			
-				{items.map((item) => renderItem(item))}
-				<BaseButton variant="outline-light" label={<BiRightArrow />} onClick={nextPage} />	
+			<h1 className="list-title">{categoryId ? categoryId+"s" : "Tienda"}</h1>
+			<div className="item-list">			
+				{items.map((item) => renderItem(item))}	
 			</div>
 		</div>
 	);

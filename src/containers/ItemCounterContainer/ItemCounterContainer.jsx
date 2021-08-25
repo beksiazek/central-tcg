@@ -6,21 +6,16 @@ export default function QuantitySelectorContainer(props) {
 		maxQuantity,
 		currentQuantity,
 		setCurrentQuantity,
-		customQuantitySet,
 		variant,
 	} = props;
 
-//TO DO resolver problema al renderizar con el valor viejo de currentQuantity
 	function substractItem() {
 		setCurrentQuantity(currentQuantity - 1);
-		customQuantitySet && customQuantitySet(currentQuantity - 1);
 	}
 
 	function addItem() {
 		setCurrentQuantity(currentQuantity + 1);
-		customQuantitySet && customQuantitySet(currentQuantity + 1);
 	}
-/////////
 
 	function onInput(event, value) {
 		isNaN(value)

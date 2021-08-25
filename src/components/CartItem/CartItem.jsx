@@ -11,8 +11,6 @@ export default function CartItem(props) {
 
 	const { setItemQuantityFromCart, removeItemFromCart } = useContext(cartContext);
 
-	const [currentQuantity, setCurrentQuantity] = useState(quantity);
-
 	const [isLoadingImg, setIsLoadingImg] = useState(true);
 
 	useEffect(() => {
@@ -45,10 +43,8 @@ export default function CartItem(props) {
 				<ItemCounter
 					variant="outline-dark"
 					maxQuantity={3}
-					currentQuantity={currentQuantity}
-					setCurrentQuantity={setCurrentQuantity}
-					customQuantitySet={(quantity) => {setItemQuantityFromCart(item, quantity)}}
-					
+					currentQuantity={quantity}
+					setCurrentQuantity={(quantity) => {setItemQuantityFromCart(item, quantity)}}					
 				/>
 			</Col>
 			<Col sm={2} xs={6} className="list-item-field">

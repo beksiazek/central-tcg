@@ -18,3 +18,7 @@
 .view-icon-secondary {
     font-size: 4.5rem;
 }
+
+.wide-margin > * {
+    margin-bottom: 30px;
+}
