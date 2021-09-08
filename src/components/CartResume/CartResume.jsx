@@ -20,21 +20,24 @@ export default function CartResume(props) {
 			</div>
 			{formShow ? (
 				<button
-					className="pay-button btn btn-success"
+					className="finish-button btn btn-success"
 					onClick={generateOrder}
 				>
 					Finalizar compra
 				</button>
 			) : (
-				<button
-					className="pay-button btn btn-success"
-					onClick={() => setFormShow(true)}
-				>
-					Completar datos
-				</button>
+				<div>
+					<h4 className="data-fill-label" >Complete los datos de su orden</h4>
+					<button
+						className=" btn btn-success data-fill-button"
+						onClick={() => setFormShow(true)}
+					>
+						Continuar
+					</button>
+				</div>
 			)}
 			<button
-				className="clear-cart-button btn btn-outline-danger"
+				className="btn btn-outline-danger"
 				onClick={clearCart}
 			>
 				Vaciar carrito

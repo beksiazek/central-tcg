@@ -6,7 +6,7 @@ export default function UserDataForm() {
 		<div className="form-container">
 			<form className="user-data-form" action="">
 				<div>
-					<label for="name">Nombre</label>
+					<label>Nombre</label>
 					<input
 						type="text"
 						id="name"
@@ -15,7 +15,7 @@ export default function UserDataForm() {
 					/>
 				</div>
 				<div className="form-top-margin" >
-					<label for="email">Email</label>
+					<label>Email</label>
 					<input
 						type="email"
 						id="email"
@@ -24,7 +24,7 @@ export default function UserDataForm() {
 					/>
 				</div>
 				<div className="form-top-margin">
-					<label for="phone">Teléfono</label>
+					<label>Teléfono</label>
 					<input
 						type="tel"
 						id="phone"
