@@ -20,10 +20,11 @@ export default function ItemDetailContainer() {
 	function onAddToCart() {
 		addItemToCart(item, currentQuantity);
 		setAddedToCart(true);
-		console.log(
-			currentQuantity +
-				(currentQuantity > 1 ? " items" : " item") +
-				" se han agregado al carrito!"
+	}
+
+	function setCheckButton() {
+		item && setCheckButtonIsDisabled(
+			currentQuantity <= 0 || currentQuantity > item.stock
 		);
 	}
 
@@ -38,18 +39,13 @@ export default function ItemDetailContainer() {
 	}, [itemId]);
 
 	useEffect(
-		() =>
-			setCheckButtonIsDisabled(
-				currentQuantity <= 0 || currentQuantity > 3
-			),
-		[currentQuantity]
+		() => setCheckButton()
 	);
 
 	return item ? (
 		<ItemDetail
 			item={item}
 			initQuantity={1}
-			maxQuantity={3}
 			currentQuantity={currentQuantity}
 			setCurrentQuantity={setCurrentQuantity}
 			onAddToCart={onAddToCart}

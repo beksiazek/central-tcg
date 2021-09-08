@@ -11,6 +11,7 @@ export default function ShopItemList(props) {
 			itemId={item.id}
 			imgSource={item.card_images && item.card_images[0].image_url}
 			itemLabel={item.name}
+			hasStock={item.stock > 0}
 		></Item>;
 	}
 

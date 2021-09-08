@@ -20,3 +20,7 @@ h1 {
     flex-wrap: wrap;
     gap: 2em;
 }
+
+.list-title {
+    margin: 20px;
+}

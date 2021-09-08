@@ -6,7 +6,7 @@ import SearchBar from "./components/SearchBar/SearchBar";
 import CartWidget from "./components/CartWidget/CartWidget";
 import ItemListContainer from "./containers/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./containers/ItemDetailContainer/ItemDetailContainer";
-import Cart from "./components/Cart/Cart";
+import CartContainer from "./containers/CartContainer/CartContainer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -32,7 +32,7 @@ export default function App() {
 							<ItemDetailContainer />
 						</Route>
 						<Route path="/cart">
-							<Cart />
+							<CartContainer />
 						</Route>
 					</Switch>
 				</div>

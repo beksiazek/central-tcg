@@ -1,5 +1,5 @@
 import React from "react";
-import { Link }  from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import ItemCounter from "../../containers/ItemCounterContainer/ItemCounterContainer";
@@ -7,13 +7,7 @@ import BaseButton from "../BaseButton/BaseButton";
 import "./ItemDetail.css";
 
 export default function ItemDetail(props) {
-	const {
-		item,
-		setCheckButtonIsDisabled,
-		onAddToCart,
-		addedToCart,
-		checkButtonIsDisabled,
-	} = props;
+	const { item, onAddToCart, addedToCart, checkButtonIsDisabled } = props;
 	const star = "⭐";
 
 	return (
@@ -43,24 +37,26 @@ export default function ItemDetail(props) {
 						<h4 className="unit">xU.</h4>
 						<div className="add-to-cart-container">
 							{!addedToCart ? (
-								<>
-									<ItemCounter
-										setCheckButtonIsDisabled={
-											setCheckButtonIsDisabled
-										}
-										{...props}
-									/>
-									<BaseButton
-										label="Agregar al carrito"
-										variant="success"
-										onClick={onAddToCart}
-										isDisabled={checkButtonIsDisabled}
-									></BaseButton>
-								</>
+								item.stock > 0 ? (
+									<>
+										<ItemCounter
+											maxQuantity={item.stock}
+											{...props}
+										/>
+										<BaseButton
+											label="Agregar al carrito"
+											variant="success"
+											onClick={onAddToCart}
+											isDisabled={checkButtonIsDisabled}
+										></BaseButton>
+									</>
+								) : (
+									<h1>Sin stock</h1>
+								)
 							) : (
-								<Link className="btn btn-success"
-									to="/cart"
-								>Finalizar compra</Link>
+								<Link className="btn btn-success" to="/cart">
+									Finalizar compra
+								</Link>
 							)}
 						</div>
 					</div>

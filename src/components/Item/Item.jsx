@@ -5,7 +5,7 @@ import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 import "./Item.css";
 
 export default function ItemCard(props) {
-	const { itemLabel, imgSource, itemId } = props;
+	const { itemLabel, imgSource, itemId, hasStock } = props;
 
 	const [isLoadingImg, setIsLoadingImg] = useState(true);
 
@@ -24,11 +24,14 @@ export default function ItemCard(props) {
 					<LoaderSpinner />
 				</div>
 			) : (
-				<Card.Img
-					className="card-image"
-					variant="top"
-					src={imgSource}
-				/>
+				<div className="card-image-container">
+					<Card.Img
+						className={`card-image ${hasStock ? "" : "no-stock-image"}`}
+						variant="top"
+						src={imgSource}
+					/>
+					{!hasStock && <h3 className="no-stock-text">Sin Stock</h3>} 
+				</div>
 			)}
 			<Card.Body>
 				<Card.Title>{itemLabel}</Card.Title>

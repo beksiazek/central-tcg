@@ -10,8 +10,6 @@ export function CartContextProvider({ children }) {
 	const [cartItemCount, setCartItemCount] = useState(0);
 	const [cartTotal, setCartTotal] = useState(0);
 
-	console.log(cartItemList, cartTotal);
-
 	function setCartItems(itemList) {
 		setCartItemList(itemList);
 		const itemCount = _.sumBy(itemList, "quantity");
