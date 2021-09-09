@@ -9,11 +9,27 @@ const ordersCollection = db.collection("orders");
 const productsCollection = db.collection("products");
 
 export default function CartContainer() {
-
-    const { cartItemCount, cartItemList, cartTotal, clearCart } = useContext(cartContext);
+	const { cartItemCount, cartItemList, cartTotal, clearCart } =
+		useContext(cartContext);
 	const [formShow, setFormShow] = useState(false);
 	const [orderCreatedSuccessfully, setOrderCreatedSuccessfully] =
 		useState(false);
+	const [userName, setUserName] = useState("");
+	const [email, setEmail] = useState("");
+	const [phoneNumber, setPhoneNumber] = useState("");
+	const userDataStates = {
+		name: { value: userName, setter: setUserName },
+		email: { value: email, setter: setEmail },
+		phone: { value: phoneNumber, setter: setPhoneNumber },
+	};
+
+	function formIsValid() {
+		return (
+			userName !== "" &&
+			/^[^@]+@[^@]+\.[^@]+$/.test(email) &&
+			/^\+?[0-9]{3}-?[0-9]{6,12}$/.test(phoneNumber)
+		);
+	}
 
 	function generateOrder() {
 		const orderItems = cartItemList.map((product) => ({
@@ -24,9 +40,9 @@ export default function CartContainer() {
 		}));
 		const newOrder = {
 			buyer: {
-				name: "Tester",
-				phone: "1122334455",
-				email: "test@test.test",
+				name: userName || "Tester",
+				phone: phoneNumber || "1122334455",
+				email: email || "test@test.test",
 			},
 			items: orderItems,
 			date: firebase.firestore.Timestamp.fromDate(new Date()),
@@ -57,18 +73,24 @@ export default function CartContainer() {
 			});
 	}
 
+	function finishPurchase() {
+		formIsValid() && generateOrder();
+	}
+
 	function clearOrderAndCart() {
 		setOrderCreatedSuccessfully(false);
 		clearCart();
 	}
 
-    return (
-        <Cart 
-        orderCreatedSuccessfully={orderCreatedSuccessfully}
-        clearOrderAndCart={clearOrderAndCart}
-        cartItemCount={cartItemCount}
-		formShow={formShow}
-		setFormShow={setFormShow}
-        generateOrder={generateOrder} />
-    )
+	return (
+		<Cart
+			orderCreatedSuccessfully={orderCreatedSuccessfully}
+			clearOrderAndCart={clearOrderAndCart}
+			cartItemCount={cartItemCount}
+			formShow={formShow}
+			setFormShow={setFormShow}
+			userDataStates={userDataStates}
+			finishPurchase={finishPurchase}
+		/>
+	);
 }

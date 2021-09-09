@@ -9,17 +9,17 @@ import "./Cart.css";
 
 
 export default function Cart(props) {
-	const { orderCreatedSuccessfully, clearOrderAndCart, cartItemCount, generateOrder, formShow, setFormShow } = props;
+	const { orderCreatedSuccessfully, clearOrderAndCart, cartItemCount, finishPurchase, formShow, setFormShow, userDataStates } = props;
 
 	return orderCreatedSuccessfully ? (
 		<SuccessfulOrderView orderId={orderCreatedSuccessfully} clearOrderAndCart={clearOrderAndCart} />
 	) : cartItemCount > 0 ? (
 		<Row className="cart">
 			<Col xs={8}>
-				{formShow ? <UserDataForm /> : <CartList />}
+				{formShow ? <UserDataForm userDataStates={userDataStates} /> : <CartList />}
 			</Col>
 			<Col xs={4}>
-				<CartResume generateOrder={generateOrder} formShow={formShow} setFormShow={setFormShow} />
+				<CartResume finishPurchase={finishPurchase} formShow={formShow} setFormShow={setFormShow} />
 			</Col>
 		</Row>
 	) : (

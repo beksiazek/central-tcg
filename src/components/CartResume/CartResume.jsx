@@ -4,7 +4,7 @@ import "./CartResume.css";
 
 export default function CartResume(props) {
 	const { clearCart } = useContext(cartContext);
-	const { formShow, setFormShow, generateOrder } = props;
+	const { formShow, setFormShow, finishPurchase } = props;
 
 	return (
 		<div className="cart-resume">
@@ -21,7 +21,7 @@ export default function CartResume(props) {
 			{formShow ? (
 				<button
 					className="finish-button btn btn-success"
-					onClick={generateOrder}
+					onClick={finishPurchase}
 				>
 					Finalizar compra
 				</button>
