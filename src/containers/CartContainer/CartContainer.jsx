@@ -1,6 +1,8 @@
 import { React, useState, useContext } from "react";
 import cartContext from "../../context/cartContext";
 import Cart from "../../components/Cart/Cart";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { firestore } from "../../firebase/firebase";
 import firebase from "firebase/app";
 
@@ -11,24 +13,31 @@ const productsCollection = db.collection("products");
 export default function CartContainer() {
 	const { cartItemCount, cartItemList, cartTotal, clearCart } =
 		useContext(cartContext);
+
 	const [formShow, setFormShow] = useState(false);
 	const [orderCreatedSuccessfully, setOrderCreatedSuccessfully] =
 		useState(false);
+
 	const [userName, setUserName] = useState("");
 	const [email, setEmail] = useState("");
 	const [phoneNumber, setPhoneNumber] = useState("");
+
+	const nameIsValid = userName !== "";
+	const emailIsValid = /^[^@]+@[^@]+\.[^@]+$/.test(email);
+	const phoneIsValid = /^\+?[0-9]{8,12}$/.test(phoneNumber);
+
 	const userDataStates = {
-		name: { value: userName, setter: setUserName },
-		email: { value: email, setter: setEmail },
-		phone: { value: phoneNumber, setter: setPhoneNumber },
+		name: { value: userName, setter: setUserName, isInvalid: !nameIsValid },
+		email: { value: email, setter: setEmail, isInvalid: !emailIsValid },
+		phone: {
+			value: phoneNumber,
+			setter: setPhoneNumber,
+			isInvalid: !phoneIsValid,
+		},
 	};
 
 	function formIsValid() {
-		return (
-			userName !== "" &&
-			/^[^@]+@[^@]+\.[^@]+$/.test(email) &&
-			/^\+?[0-9]{3}-?[0-9]{6,12}$/.test(phoneNumber)
-		);
+		return nameIsValid && emailIsValid && phoneIsValid;
 	}
 
 	function generateOrder() {
@@ -69,7 +78,7 @@ export default function CartContainer() {
 				setOrderCreatedSuccessfully(id);
 			})
 			.catch((err) => {
-				console.log(err);
+				toast.error("Hubo un error al generar la orden de compra! Por favor inténtalo de nuevo más tarde.");
 			});
 	}
 
@@ -83,14 +92,21 @@ export default function CartContainer() {
 	}
 
 	return (
-		<Cart
-			orderCreatedSuccessfully={orderCreatedSuccessfully}
-			clearOrderAndCart={clearOrderAndCart}
-			cartItemCount={cartItemCount}
-			formShow={formShow}
-			setFormShow={setFormShow}
-			userDataStates={userDataStates}
-			finishPurchase={finishPurchase}
-		/>
+		<>
+			<Cart
+				orderCreatedSuccessfully={orderCreatedSuccessfully}
+				clearOrderAndCart={clearOrderAndCart}
+				cartItemCount={cartItemCount}
+				formShow={formShow}
+				setFormShow={setFormShow}
+				userDataStates={userDataStates}
+				finishPurchase={finishPurchase}
+			/>
+			<ToastContainer
+				position="top-center"
+				autoClose={false}
+				closeOnClick={false}
+			/>
+		</>
 	);
 }

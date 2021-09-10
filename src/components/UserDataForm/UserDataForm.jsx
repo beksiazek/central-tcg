@@ -1,4 +1,5 @@
 import React from "react";
+import BaseInput from "../BaseInput/BaseInput";
 import "./UserDataForm.css";
 
 export default function UserDataForm(props) {
@@ -6,44 +7,39 @@ export default function UserDataForm(props) {
 
 	return (
 		<div className="form-container">
-			<form className="user-data-form" action="">
+			<h1>Datos personales</h1>
+			<form className="user-data-form form-top-margin">
 				<div>
 					<label>Nombre</label>
-					<input
+					<BaseInput
 						type="text"
 						id="name"
-						name="name"
 						placeholder="Yugi Muto..."
 						value={userDataStates["name"].value}
-						onChange={(e) => {
-							userDataStates["name"].setter(e.target.value);
-						}}
+						onChange={userDataStates["name"].setter}
+						isInvalid={userDataStates["name"].isInvalid}
 					/>
 				</div>
 				<div className="form-top-margin">
 					<label>Email</label>
-					<input
+					<BaseInput
 						type="email"
 						id="email"
-						name="email"
 						placeholder="user@user.com..."
 						value={userDataStates["email"].value}
-						onChange={(e) => {
-							userDataStates["email"].setter(e.target.value);
-						}}
+						onChange={userDataStates["email"].setter}
+						isInvalid={userDataStates["email"].isInvalid}
 					/>
 				</div>
 				<div className="form-top-margin">
 					<label>Teléfono</label>
-					<input
+					<BaseInput
 						type="tel"
 						id="phone"
-						name="phone"
 						placeholder="+541100000000..."
 						value={userDataStates["phone"].value}
-						onChange={(e) => {
-							userDataStates["phone"].setter(e.target.value);
-						}}
+						onChange={userDataStates["phone"].setter}
+						isInvalid={userDataStates["phone"].isInvalid}
 					/>
 				</div>
 			</form>

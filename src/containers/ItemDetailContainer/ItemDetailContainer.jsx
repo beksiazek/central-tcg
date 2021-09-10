@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import cartContext from "../../context/cartContext";
 import LoaderSpinner from "../../components/LoaderSpinner/LoaderSpinner";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { firestore } from "../../firebase/firebase";
 
 const db = firestore;
@@ -23,39 +25,49 @@ export default function ItemDetailContainer() {
 	}
 
 	function setCheckButton() {
-		item && setCheckButtonIsDisabled(
-			currentQuantity <= 0 || currentQuantity > item.stock
-		);
+		item &&
+			setCheckButtonIsDisabled(
+				currentQuantity <= 0 || currentQuantity > item.stock
+			);
 	}
 
 	useEffect(() => {
-		productsCollection.doc(itemId.toString()).get()
+		productsCollection
+			.doc(itemId.toString())
+			.get()
 			.then((result) => {
 				setItem(result.data());
 			})
 			.catch((err) => {
-				console.log("No se pudo completar la petición.", err);
+				toast.error("Hubo un error! Por favor recarga la página o inténtalo de nuevo más tarde.");
 			});
 	}, [itemId]);
 
-	useEffect(
-		() => setCheckButton()
-	);
+	useEffect(() => setCheckButton());
 
-	return item ? (
-		<ItemDetail
-			item={item}
-			initQuantity={1}
-			currentQuantity={currentQuantity}
-			setCurrentQuantity={setCurrentQuantity}
-			onAddToCart={onAddToCart}
-			addedToCart={addedToCart}
-			checkButtonIsDisabled={checkButtonIsDisabled}
-			setCheckButtonIsDisabled={setCheckButtonIsDisabled}
-		/>
-	) : (
-		<div className="loader-container">
-			<LoaderSpinner />
-		</div>
+	return (
+		<>
+			{item ? (
+				<ItemDetail
+					item={item}
+					initQuantity={1}
+					currentQuantity={currentQuantity}
+					setCurrentQuantity={setCurrentQuantity}
+					onAddToCart={onAddToCart}
+					addedToCart={addedToCart}
+					checkButtonIsDisabled={checkButtonIsDisabled}
+					setCheckButtonIsDisabled={setCheckButtonIsDisabled}
+				/>
+			) : (
+				<div className="loader-container">
+					<LoaderSpinner />
+				</div>
+			)}
+			<ToastContainer
+				position="top-center"
+				autoClose={false}
+				closeOnClick={false}
+			/>
+		</>
 	);
 }
