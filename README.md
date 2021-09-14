@@ -10,14 +10,21 @@
   E-commerce orientado a la compra/venta de cartas coleccionables.
 </p>
 
-# Introducción
+## Table of contents
+
+- [Introducción](#introducción)
+- [Status](#status)
+- [Próximamente](#próximamente)
+
+## Introducción
 
 Central-TCG es una plataforma en desarrollo dedicada a la comercialización e intercambio de cartas coleccionables.
 
-## Etapa de desarrollo actual
+## Status
 
 Actualmente se está desarrollando el funcionamiento básico de e-commerce, más específicamente la navegación entre secciones.
 
 ## Próximamente
 
 Proximamente se agregarán las vistas actualizadas de tienda, con el sistema de búsqueda habilitado.
+
