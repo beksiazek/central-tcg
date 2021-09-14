@@ -1,3 +1,15 @@
+<p align="center">
+  <a>
+    <img src="%PUBLIC_URL%/logo.png" alt="Central-TCG logo" width="200" height="200">
+  </a>
+</p>
+
+<h3 align="center">Central-TCG</h3>
+
+<p align="center">
+  E-commerce orientado a la compra/venta de cartas coleccionables.
+</p>
+
 # Introducción
 
 Central-TCG es una plataforma en desarrollo dedicada a la comercialización e intercambio de cartas coleccionables.

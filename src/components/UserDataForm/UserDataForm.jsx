@@ -9,7 +9,7 @@ export default function UserDataForm(props) {
 		<div className="form-container">
 			<h1>Datos personales</h1>
 			<form className="user-data-form form-top-margin">
-				<div>
+				<div title="El nombre puede contener solo letras y espacios!">
 					<label>Nombre</label>
 					<BaseInput
 						type="text"
@@ -20,7 +20,10 @@ export default function UserDataForm(props) {
 						isInvalid={userDataStates["name"].isInvalid}
 					/>
 				</div>
-				<div className="form-top-margin">
+				<div
+					title="El correo debe tener un formato válido! (ej.: example@example.com)"
+					className="form-top-margin"
+				>
 					<label>Email</label>
 					<BaseInput
 						type="email"
@@ -31,7 +34,10 @@ export default function UserDataForm(props) {
 						isInvalid={userDataStates["email"].isInvalid}
 					/>
 				</div>
-				<div className="form-top-margin">
+				<div
+					title="El teléfono debe tener al menos 8 caracteres y solo pueden ser números o prefijos (-, +)."
+					className="form-top-margin"
+				>
 					<label>Teléfono</label>
 					<BaseInput
 						type="tel"

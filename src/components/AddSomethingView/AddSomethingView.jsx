@@ -4,7 +4,7 @@ import DefaultView from "../DefaultView/DefaultView";
 import { AiOutlineShopping } from "react-icons/ai";
 import { FiArrowRight } from "react-icons/fi";
 
-export default function UnderConstructionView() {
+export default function AddSomethingView() {
 	return (
 		<DefaultView>
 			<Link to="/">

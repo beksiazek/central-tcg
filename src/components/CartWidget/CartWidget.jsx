@@ -1,9 +1,7 @@
 import { React, useContext } from "react";
 import { Link } from "react-router-dom";
 import cartContext from "../../context/cartContext";
-import BaseButton from "../BaseButton/BaseButton";
 import { AiOutlineShopping } from "react-icons/ai";
-import Badge from "@uiw/react-badge";
 import "./CartWidget.css";
 
 export default function CartWidget() {
@@ -13,12 +11,12 @@ export default function CartWidget() {
 		cartItemCount > 0 && (
 			<>
 				<Link to="/cart">
-					<Badge count={cartItemCount}>
-						<BaseButton
-							label={<AiOutlineShopping />}
-							variant="outline-light"
-						></BaseButton>
-					</Badge>
+					<span className="w-badge">
+						<button className="btn btn-outline-light">
+							{<AiOutlineShopping />}
+						</button>
+						<sup className="w-badge-count">{cartItemCount}</sup>
+					</span>
 				</Link>
 			</>
 		)

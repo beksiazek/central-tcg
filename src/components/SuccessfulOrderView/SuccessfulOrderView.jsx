@@ -8,12 +8,17 @@ export default function SuccessfulOrderView(props) {
 
 	return (
 		<DefaultView className="wide-margin">
-            <IoBagCheckOutline className="view-icon" />
+			<IoBagCheckOutline className="view-icon" />
 			<h1>Tu compra fue realizada con éxito!</h1>
 			<h4>El número de orden correspondiente es:</h4>
 			<h3>{orderId}</h3>
 			<Link to="/">
-                <button className="btn btn-outline-info" onClick={clearOrderAndCart}>Volver a la tienda</button>
+				<button
+					className="btn btn-outline-info"
+					onClick={clearOrderAndCart}
+				>
+					Volver a la tienda
+				</button>
 			</Link>
 		</DefaultView>
 	);

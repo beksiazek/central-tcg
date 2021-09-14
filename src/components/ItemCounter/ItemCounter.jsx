@@ -1,10 +1,9 @@
 import React from "react";
 import { InputGroup, FormControl } from "react-bootstrap";
-import BaseButton from "../BaseButton/BaseButton";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import "./ItemCounter.css";
 
-export default function QuantitySelector(props) {
+export default function ItemCounter(props) {
 	const {
 		currentQuantity,
 		maxQuantity,
@@ -13,17 +12,18 @@ export default function QuantitySelector(props) {
 		substractButtonIsDisabled,
 		addButtonIsDisabled,
 		onInput,
-		variant
+		variant,
 	} = props;
 
 	return (
 		<InputGroup className="quantity-input-group">
-			<BaseButton
-				label={<AiOutlineMinus />}
-				variant={variant || "outline-light"}
+			<button
+				className={variant ? "btn btn-" + variant : "btn btn-outline-light"}
 				onClick={substractItem}
-				isDisabled={substractButtonIsDisabled}
-			></BaseButton>
+				disabled={substractButtonIsDisabled}
+			>
+				{<AiOutlineMinus />}
+			</button>
 			<FormControl
 				type="numeric"
 				inputMode="number"
@@ -34,12 +34,13 @@ export default function QuantitySelector(props) {
 				onChange={(event) => onInput(event, event.target.value)}
 				value={currentQuantity}
 			/>
-			<BaseButton
-				label={<AiOutlinePlus />}
-				variant={variant || "outline-light"}
+			<button
+				className={variant ? "btn btn-" + variant : "btn btn-outline-light"}
 				onClick={addItem}
-				isDisabled={addButtonIsDisabled}
-			></BaseButton>
+				disabled={addButtonIsDisabled}
+			>
+				{<AiOutlinePlus />}
+			</button>
 		</InputGroup>
 	);
 }

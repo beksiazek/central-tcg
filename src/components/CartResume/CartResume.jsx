@@ -4,7 +4,7 @@ import "./CartResume.css";
 
 export default function CartResume(props) {
 	const { clearCart } = useContext(cartContext);
-	const { formShow, setFormShow, finishPurchase } = props;
+	const { formShow, setFormShow, finishPurchase, isDisabledFinishPurchase } = props;
 
 	return (
 		<div className="cart-resume">
@@ -22,12 +22,15 @@ export default function CartResume(props) {
 				<button
 					className="finish-button btn btn-success"
 					onClick={finishPurchase}
+					disabled={isDisabledFinishPurchase}
 				>
 					Finalizar compra
 				</button>
 			) : (
 				<div>
-					<h4 className="data-fill-label" >Complete los datos de su orden</h4>
+					<h4 className="data-fill-label">
+						Complete los datos de su orden
+					</h4>
 					<button
 						className=" btn btn-success data-fill-button"
 						onClick={() => setFormShow(true)}
@@ -36,10 +39,7 @@ export default function CartResume(props) {
 					</button>
 				</div>
 			)}
-			<button
-				className="btn btn-outline-danger"
-				onClick={clearCart}
-			>
+			<button className="btn btn-outline-danger" onClick={clearCart}>
 				Vaciar carrito
 			</button>
 		</div>

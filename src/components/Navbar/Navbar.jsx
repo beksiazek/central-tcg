@@ -10,12 +10,21 @@ export default function NavbarComponent(props) {
 	return (
 		<Navbar className="base-nav" variant="dark">
 			<Container>
-				<Navbar.Brand as={Link} to="/"><GiCardExchange className="brand-icon" />{`${brandName}`}</Navbar.Brand>
+				<Navbar.Brand as={Link} to="/">
+					<GiCardExchange className="brand-icon" />
+					{`${brandName}`}
+				</Navbar.Brand>
 				<Navbar.Toggle />
 				<Nav className="me-auto">
-					<Nav.Link as={Link} to="/category/monster">Monsters</Nav.Link>
-					<Nav.Link as={Link} to="/category/spell">Spells</Nav.Link>
-					<Nav.Link as={Link} to="/category/trap">Traps</Nav.Link>
+					<Nav.Link as={Link} to="/category/monster">
+						Monsters
+					</Nav.Link>
+					<Nav.Link as={Link} to="/category/spell">
+						Spells
+					</Nav.Link>
+					<Nav.Link as={Link} to="/category/trap">
+						Traps
+					</Nav.Link>
 				</Nav>
 				<Nav>{children}</Nav>
 				<Navbar.Collapse className="justify-content-end">

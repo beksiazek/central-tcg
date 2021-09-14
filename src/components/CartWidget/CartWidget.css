@@ -1,4 +1,25 @@
-.cart-badge-hidden {
-    background: none;
-    box-shadow: none;
+.w-badge {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+sup.w-badge-count {
+    position: absolute;
+    transform: translateX(-50%);
+    top: -10px;
+    height: 16px;
+    border-radius: 10px;
+    min-width: 16px;
+    background: #f04134;
+    color: #fff;
+    line-height: 16px;
+    text-align: center;
+    padding: 0 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    transform-origin: -10% center;
+    font-family: tahoma;
+    box-shadow: 0 0 0 1px #fff;
 }

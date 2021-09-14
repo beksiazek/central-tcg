@@ -34,7 +34,9 @@ export default function Shop(props) {
 				setItems(docs);
 			})
 			.catch((err) => {
-				toast.error("Hubo un error! Por favor recarga la página o inténtalo de nuevo más tarde.");
+				toast.error(
+					"Hubo un error! Por favor recarga la página o inténtalo de nuevo más tarde."
+				);
 			});
 	}, [categoryId]);
 

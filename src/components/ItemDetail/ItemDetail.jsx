@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import ItemCounter from "../../containers/ItemCounterContainer/ItemCounterContainer";
-import BaseButton from "../BaseButton/BaseButton";
 import "./ItemDetail.css";
 
 export default function ItemDetail(props) {
-	const { item, onAddToCart, addedToCart, checkButtonIsDisabled } = props;
+	const {
+		item,
+		onAddToCart,
+		addedToCart,
+		checkButtonIsDisabled,
+		maxQuantity,
+	} = props;
 	const star = "⭐";
 
 	return (
@@ -38,18 +43,23 @@ export default function ItemDetail(props) {
 						<div className="add-to-cart-container">
 							{!addedToCart ? (
 								item.stock > 0 ? (
-									<>
-										<ItemCounter
-											maxQuantity={item.stock}
-											{...props}
-										/>
-										<BaseButton
-											label="Agregar al carrito"
-											variant="success"
-											onClick={onAddToCart}
-											isDisabled={checkButtonIsDisabled}
-										></BaseButton>
-									</>
+									maxQuantity > 0 ? (
+										<>
+											<ItemCounter {...props} />
+											<button
+												className="btn btn-success"
+												onClick={onAddToCart}
+												disabled={checkButtonIsDisabled}
+											>
+												Agregar al carrito
+											</button>
+										</>
+									) : (
+										<h3>
+											Ya agregó al carrito la cantidad
+											máxima en stock
+										</h3>
+									)
 								) : (
 									<h1>Sin stock</h1>
 								)

@@ -22,7 +22,7 @@ export default function CartContainer() {
 	const [email, setEmail] = useState("");
 	const [phoneNumber, setPhoneNumber] = useState("");
 
-	const nameIsValid = userName !== "";
+	const nameIsValid = /^[a-zA-Z\s]*$/.test(userName);
 	const emailIsValid = /^[^@]+@[^@]+\.[^@]+$/.test(email);
 	const phoneIsValid = /^\+?[0-9]{8,12}$/.test(phoneNumber);
 
@@ -78,7 +78,9 @@ export default function CartContainer() {
 				setOrderCreatedSuccessfully(id);
 			})
 			.catch((err) => {
-				toast.error("Hubo un error al generar la orden de compra! Por favor inténtalo de nuevo más tarde.");
+				toast.error(
+					"Hubo un error al generar la orden de compra! Por favor inténtalo de nuevo más tarde."
+				);
 			});
 	}
 
@@ -101,6 +103,7 @@ export default function CartContainer() {
 				setFormShow={setFormShow}
 				userDataStates={userDataStates}
 				finishPurchase={finishPurchase}
+				isDisabledFinishPurchase={!formIsValid()}
 			/>
 			<ToastContainer
 				position="top-center"

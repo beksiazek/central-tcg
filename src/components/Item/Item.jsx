@@ -26,11 +26,13 @@ export default function ItemCard(props) {
 			) : (
 				<div className="card-image-container">
 					<Card.Img
-						className={`card-image ${hasStock ? "" : "no-stock-image"}`}
+						className={`card-image ${
+							hasStock ? "" : "no-stock-image"
+						}`}
 						variant="top"
 						src={imgSource}
 					/>
-					{!hasStock && <h3 className="no-stock-text">Sin Stock</h3>} 
+					{!hasStock && <h3 className="no-stock-text">Sin Stock</h3>}
 				</div>
 			)}
 			<Card.Body>

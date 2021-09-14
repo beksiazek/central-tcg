@@ -7,19 +7,39 @@ import SuccessfulOrderView from "../SuccessfulOrderView/SuccessfulOrderView";
 import { Row, Col } from "react-bootstrap";
 import "./Cart.css";
 
-
 export default function Cart(props) {
-	const { orderCreatedSuccessfully, clearOrderAndCart, cartItemCount, finishPurchase, formShow, setFormShow, userDataStates } = props;
+	const {
+		orderCreatedSuccessfully,
+		clearOrderAndCart,
+		cartItemCount,
+		finishPurchase,
+		isDisabledFinishPurchase,
+		formShow,
+		setFormShow,
+		userDataStates,
+	} = props;
 
 	return orderCreatedSuccessfully ? (
-		<SuccessfulOrderView orderId={orderCreatedSuccessfully} clearOrderAndCart={clearOrderAndCart} />
+		<SuccessfulOrderView
+			orderId={orderCreatedSuccessfully}
+			clearOrderAndCart={clearOrderAndCart}
+		/>
 	) : cartItemCount > 0 ? (
 		<Row className="cart">
 			<Col xs={8}>
-				{formShow ? <UserDataForm userDataStates={userDataStates} /> : <CartList />}
+				{formShow ? (
+					<UserDataForm userDataStates={userDataStates} />
+				) : (
+					<CartList />
+				)}
 			</Col>
 			<Col xs={4}>
-				<CartResume finishPurchase={finishPurchase} formShow={formShow} setFormShow={setFormShow} />
+				<CartResume
+					finishPurchase={finishPurchase}
+					isDisabledFinishPurchase={isDisabledFinishPurchase}
+					formShow={formShow}
+					setFormShow={setFormShow}
+				/>
 			</Col>
 		</Row>
 	) : (

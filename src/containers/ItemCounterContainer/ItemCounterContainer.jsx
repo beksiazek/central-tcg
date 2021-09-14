@@ -2,12 +2,7 @@ import { React } from "react";
 import ItemCounter from "../../components/ItemCounter/ItemCounter";
 
 export default function QuantitySelectorContainer(props) {
-	const {
-		maxQuantity,
-		currentQuantity,
-		setCurrentQuantity,
-		variant,
-	} = props;
+	const { maxQuantity, currentQuantity, setCurrentQuantity, variant } = props;
 
 	function substractItem() {
 		setCurrentQuantity(currentQuantity - 1);

@@ -9,7 +9,8 @@ import "./CartItem.css";
 export default function CartItem(props) {
 	const { item, quantity } = props;
 
-	const { setItemQuantityFromCart, removeItemFromCart } = useContext(cartContext);
+	const { setItemQuantityFromCart, removeItemFromCart } =
+		useContext(cartContext);
 
 	const [isLoadingImg, setIsLoadingImg] = useState(true);
 
@@ -42,9 +43,11 @@ export default function CartItem(props) {
 			<Col sm={3} xs={6} className="list-item-field">
 				<ItemCounter
 					variant="outline-dark"
-					maxQuantity={3}
+					maxQuantity={item.stock}
 					currentQuantity={quantity}
-					setCurrentQuantity={(quantity) => {setItemQuantityFromCart(item, quantity)}}					
+					setCurrentQuantity={(quantity) => {
+						setItemQuantityFromCart(item, quantity);
+					}}
 				/>
 			</Col>
 			<Col sm={2} xs={6} className="list-item-field">
@@ -52,7 +55,11 @@ export default function CartItem(props) {
 				{(item.card_prices[0].tcgplayer_price * quantity).toFixed(2)}
 			</Col>
 			<Col sm={1} xs={3} className="list-item-field delete-item">
-				<BiTrashAlt onClick={() => {removeItemFromCart(item.id)}}/>
+				<BiTrashAlt
+					onClick={() => {
+						removeItemFromCart(item.id);
+					}}
+				/>
 			</Col>
 		</Row>
 	);

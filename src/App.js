@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { CartContextProvider } from "./context/cartContext";
 import Navbar from "./components/Navbar/Navbar";
-import SearchBar from "./components/SearchBar/SearchBar";
 import CartWidget from "./components/CartWidget/CartWidget";
 import ItemListContainer from "./containers/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./containers/ItemDetailContainer/ItemDetailContainer";
@@ -18,9 +17,7 @@ export default function App() {
 					<Navbar
 						brandName="Central-TCG"
 						rightElement={<CartWidget />}
-					>
-						<SearchBar />
-					</Navbar>
+					/>
 					<Switch>
 						<Route exact path="/">
 							<ItemListContainer />

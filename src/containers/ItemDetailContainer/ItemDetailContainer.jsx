@@ -1,4 +1,5 @@
 import { React, useState, useEffect, useContext } from "react";
+import _ from "lodash";
 import { useParams } from "react-router-dom";
 import cartContext from "../../context/cartContext";
 import LoaderSpinner from "../../components/LoaderSpinner/LoaderSpinner";
@@ -17,7 +18,21 @@ export default function ItemDetailContainer() {
 	const [checkButtonIsDisabled, setCheckButtonIsDisabled] = useState(true);
 	const [addedToCart, setAddedToCart] = useState(false);
 
-	const { addItemToCart } = useContext(cartContext);
+	const { addItemToCart, cartItemList } = useContext(cartContext);
+
+	function getMaxQuantity(itemId, stock) {
+		const cartItem = _.find(
+			cartItemList,
+			({ item: { id } }) => id === itemId
+		);
+
+		if (cartItem) {
+			let quantity = stock - cartItem.quantity;
+			return quantity;
+		} else {
+			return stock;
+		}
+	}
 
 	function onAddToCart() {
 		addItemToCart(item, currentQuantity);
@@ -39,7 +54,9 @@ export default function ItemDetailContainer() {
 				setItem(result.data());
 			})
 			.catch((err) => {
-				toast.error("Hubo un error! Por favor recarga la página o inténtalo de nuevo más tarde.");
+				toast.error(
+					"Hubo un error! Por favor recarga la página o inténtalo de nuevo más tarde."
+				);
 			});
 	}, [itemId]);
 
@@ -51,6 +68,7 @@ export default function ItemDetailContainer() {
 				<ItemDetail
 					item={item}
 					initQuantity={1}
+					maxQuantity={getMaxQuantity(item.id, item.stock)}
 					currentQuantity={currentQuantity}
 					setCurrentQuantity={setCurrentQuantity}
 					onAddToCart={onAddToCart}
