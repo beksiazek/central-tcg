@@ -1,6 +1,6 @@
 <p align="center">
   <a>
-    <img src="%PUBLIC_URL%/logo.png" alt="Central-TCG logo" width="200" height="200">
+    <img src="public/logo.png" alt="Central-TCG logo" width="200" height="200">
   </a>
 </p>
 
