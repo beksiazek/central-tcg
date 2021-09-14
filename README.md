@@ -16,7 +16,6 @@
 - [Dependencias](#dependencias)
 - [Uso](#uso)
 - [Status](#status)
-- [Próximamente](#próximamente)
 
 ## Introducción
 
