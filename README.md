@@ -49,7 +49,7 @@ npm start
 
 ## Uso
 
-El flujo básico del uso de la aplicación es el siguiente: 
+El flujo básico del uso de la aplicación es el siguiente ([ver video](https://firebasestorage.googleapis.com/v0/b/central-tcg.appspot.com/o/usage.webm?alt=media&token=a9d432d6-773f-44d9-a156-991961cfeb34)): 
 
 - Página principal
 
